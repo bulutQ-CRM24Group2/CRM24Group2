@@ -2,7 +2,7 @@ package com.automation.tests;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.WebDriver;
@@ -56,7 +56,7 @@ public abstract class AbstractBaseTest {
     @AfterMethod
     public void teardown(ITestResult testResult){
         if (testResult.getStatus() == ITestResult.FAILURE){
-            String screenshotLocation = BrowserUtilities.getScreenshot(testResult.getName());
+            String screenshotLocation = BrowserUtils.getScreenshot(testResult.getName());
             try {
                 extentTest.fail(testResult.getName());
                 extentTest.addScreenCaptureFromPath(screenshotLocation);
@@ -70,7 +70,7 @@ public abstract class AbstractBaseTest {
         }else if (testResult.getStatus() == ITestResult.SKIP){
             extentTest.skip(testResult.getName());
         }
-        BrowserUtilities.wait(3);
+        BrowserUtils.wait(3);
         Driver.closeDriver();
     }
 

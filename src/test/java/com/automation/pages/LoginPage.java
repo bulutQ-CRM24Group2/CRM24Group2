@@ -1,5 +1,5 @@
 package com.automation.pages;
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.Keys;
@@ -63,11 +63,11 @@ public class LoginPage extends AbstractBasePage {
     public void login(String usernameValue, String passwordValue){
         username.sendKeys(usernameValue);
         password.sendKeys(passwordValue, Keys.ENTER);
-        BrowserUtilities.wait(3);
+        BrowserUtils.wait(3);
     }
 
     public void login(){
-        BrowserUtilities.wait(3);
+        BrowserUtils.wait(3);
         username.sendKeys(ConfigurationReader.getProperty("username"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
     }

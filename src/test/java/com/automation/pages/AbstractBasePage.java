@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class PageBase {
+public abstract class AbstractBasePage {
     protected WebDriver driver= Driver.getDriver();
     protected WebDriverWait wait=new WebDriverWait(driver,20);
     @FindBy(id="user-block")
@@ -27,7 +27,7 @@ public abstract class PageBase {
     protected WebElement searchBox;
     @FindBy(id = "sitemap-menu")
     protected  WebElement siteMapBtn;
-    public PageBase(){
+    public AbstractBasePage(){
         PageFactory.initElements(driver,this);
     }
     /**
