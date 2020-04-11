@@ -6,3 +6,6 @@ Current module name: Activity Stream
 • File upload / download 
 • Create POLL 
 • Send announcement
+
+# If you have a trouble with Git commands you can check git-guide folder
+
