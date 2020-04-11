@@ -82,6 +82,7 @@ public class BrowserUtils {
      * @param name screenshot name
      * @return path to the screenshot
      */
+
     public static String getScreenshot(String name) {
         //adding date and time to screenshot name, to make screenshot unique
         name = new Date().toString().replace(" ", "_").replace(":", "-") + "_" + name;
@@ -112,6 +113,7 @@ public class BrowserUtils {
         }
         return path;
     }
+
     /**
      * This method will switch webdriver from current window
      * to target window based on page title
@@ -128,5 +130,15 @@ public class BrowserUtils {
         }
     }
 
-
+    public static void setReactValue(WebElement element, String value)
+    {
+        String script = "var element = arguments[0];" +
+                "var value = arguments[1];" +
+                "var nativeInputValueSetter = Object.getOwnPropertyDescriptor(element._proto_, \"value\").set;" +
+                "nativeInputValueSetter.call(element, value);" +
+                "var customEvent = new Event(\"input\", { bubbles: true});" +
+                "element.dispatchEvent(customEvent);";
+        JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
+        executor.executeScript(script, element, value);
+    }
 }
