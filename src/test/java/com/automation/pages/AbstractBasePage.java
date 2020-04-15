@@ -27,13 +27,18 @@ public abstract class AbstractBasePage {
     protected WebElement searchBox;
     @FindBy(id = "sitemap-menu")
     protected  WebElement siteMapBtn;
+
+
     public AbstractBasePage(){
         PageFactory.initElements(driver,this);
     }
+
     /**
      * This method returns Current User Name
      * @return user name as String value
      */
+
+
     public String getCurrentUserName(){
         BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(currentUser));

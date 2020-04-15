@@ -2,10 +2,14 @@ package com.automation.pages;
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 public class LoginPage extends AbstractBasePage {
 
     @FindBy(className = "log-popup-header")
@@ -68,9 +72,10 @@ public class LoginPage extends AbstractBasePage {
 
     public void login(){
         BrowserUtils.wait(3);
-        username.sendKeys(ConfigurationReader.getProperty("username"));
+        username.sendKeys(ConfigurationReader.getProperty("marketing"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
     }
+
 
 
 
