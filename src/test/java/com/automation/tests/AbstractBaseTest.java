@@ -54,6 +54,7 @@ public abstract class AbstractBaseTest {
         driver = Driver.getDriver();
         driver.get(ConfigurationReader.getProperty("environment"));
         driver.manage().window().maximize();
+        BrowserUtils.waitForPageToLoad(10);
     }
 
 
