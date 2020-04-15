@@ -72,9 +72,15 @@ public class LoginPage extends AbstractBasePage {
 
     public void login(){
         BrowserUtils.wait(3);
-        username.sendKeys(ConfigurationReader.getProperty("marketing"));
+        username.sendKeys(ConfigurationReader.getProperty("username"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
     }
+    public void loginAs(String userType){
+        username.sendKeys(ConfigurationReader.getProperty(userType));
+        password.sendKeys(ConfigurationReader.getProperty("password"));
+        login.click();
+    }
+
 
 
 
