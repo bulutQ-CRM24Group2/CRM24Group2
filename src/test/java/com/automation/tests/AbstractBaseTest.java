@@ -48,8 +48,9 @@ public abstract class AbstractBaseTest {
     @BeforeMethod
     public void setup(){
         driver = Driver.getDriver();
-        driver.get(ConfigurationReader.getProperty("url"));
+        driver.get(ConfigurationReader.getProperty("environment"));
         driver.manage().window().maximize();
+        BrowserUtils.waitForPageToLoad(10);
     }
 
 
