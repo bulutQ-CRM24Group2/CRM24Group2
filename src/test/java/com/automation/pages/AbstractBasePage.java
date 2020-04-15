@@ -36,6 +36,9 @@ public abstract class AbstractBasePage {
     protected WebElement searchBox;
     @FindBy(id = "sitemap-menu")
     protected  WebElement siteMapBtn;
+    @FindBy(id = "'feed-add-post-form-tab")
+    protected  WebElement buttons;
+
     public AbstractBasePage(){
         PageFactory.initElements(driver,this);
     }
@@ -115,4 +118,6 @@ public abstract class AbstractBasePage {
         WebElement leftmenu=driver.findElement(By.xpath("//*[@title='"+module+"']"));
         wait.until(ExpectedConditions.visibilityOf(leftmenu)).click();
     }
-}
+
+    }
+
