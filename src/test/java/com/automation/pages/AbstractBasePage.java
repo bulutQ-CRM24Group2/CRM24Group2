@@ -119,5 +119,7 @@ public abstract class AbstractBasePage {
         wait.until(ExpectedConditions.visibilityOf(leftmenu)).click();
     }
 
-    }
+
+
+}
 
