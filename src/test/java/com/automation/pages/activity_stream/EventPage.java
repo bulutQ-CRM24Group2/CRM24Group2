@@ -1,5 +1,6 @@
-package com.automation.pages;
+package com.automation.pages.activity_stream;
 
+import com.automation.pages.AbstractBasePage;
 import com.automation.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -217,7 +218,7 @@ public class EventPage extends AbstractBasePage {
         BrowserUtils.waitForPageToLoad(20);
         wait.until(ExpectedConditions.visibilityOf(am_pm));
         if(!(am_pm.getText().equals(am_or_pm))){
-            am_pm.click();
+           // am_pm.click();
             BrowserUtils.wait(2);
         }
     }
@@ -376,6 +377,8 @@ public class EventPage extends AbstractBasePage {
         wait.until(ExpectedConditions.visibilityOf(send)).click();
         BrowserUtils.wait(2);
     }
+
+
 
 
 }

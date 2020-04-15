@@ -1,6 +1,7 @@
 package com.automation.tests;
 
-import com.automation.pages.EventPage;
+import com.automation.pages.activity_stream.ActivityStream;
+import com.automation.pages.activity_stream.EventPage;
 import com.automation.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,6 +12,7 @@ public class EventTests extends AbstractBaseTest {
     public void verifyLinkSaved() {
         extentTest = extentReports.createTest("Verify link saved");
         LoginPage loginPage = new LoginPage();
+        ActivityStream activityStream = new ActivityStream();
         EventPage eventPage = new EventPage();
         loginPage.login();
 
@@ -18,7 +20,7 @@ public class EventTests extends AbstractBaseTest {
         String link = "https://dzone.com/articles/types-of-meetings-in-scrum-and-agile";
 
 
-        loginPage.navigateTo("Event");
+        activityStream.navigateTo("Event");
         eventPage.putEventName("Grooming Meeting");
 
         eventPage.clickLink(text,link);
@@ -34,11 +36,12 @@ public class EventTests extends AbstractBaseTest {
     public void verifyFileUploaded() {
         extentTest = extentReports.createTest("Verify file uploaded");
         LoginPage loginPage = new LoginPage();
+        ActivityStream activityStream = new ActivityStream();
         EventPage eventPage = new EventPage();
         loginPage.login();
 
 
-        loginPage.navigateTo("Event");
+        activityStream.navigateTo("Event");
         eventPage.putEventName("Grooming Meeting");
         eventPage.uploadFile();
         eventPage.chooseMembers("marketing1@cybertekschool.com");
@@ -53,9 +56,10 @@ public class EventTests extends AbstractBaseTest {
         extentTest = extentReports.createTest("Verify date and time setted");
         LoginPage loginPage = new LoginPage();
         EventPage eventPage = new EventPage();
+        ActivityStream activityStream = new ActivityStream();
         loginPage.login();
 
-        loginPage.navigateTo("Event");
+        activityStream.navigateTo("Event");
         eventPage.putEventName("Grooming Meeting");
 
         eventPage.clickStartDate();
@@ -78,21 +82,17 @@ public class EventTests extends AbstractBaseTest {
         String startTime = eventPage.getStartTime();
         Assert.assertEquals(startTime, "2:35 pm" );
 
-        //Assert.assertEquals(eventPage.getPm_am("am").getText(), "am");
-
-
-
-
     }
 
     @Test
     public void verifyReminderSelected() {
         extentTest = extentReports.createTest("Verify set reminder button is selected");
         LoginPage loginPage = new LoginPage();
+        ActivityStream activityStream = new ActivityStream();
         EventPage eventPage = new EventPage();
         loginPage.login();
 
-        loginPage.navigateTo("Event");
+        activityStream.navigateTo("Event");
         eventPage.putEventName("Grooming Meeting");
         //eventPage.selectReminder();
         Assert.assertTrue(eventPage.selectReminder().isSelected());
@@ -103,6 +103,7 @@ public class EventTests extends AbstractBaseTest {
     public void verifyEvent(){
         extentTest = extentReports.createTest("Verify link saved");
         LoginPage loginPage = new LoginPage();
+        ActivityStream activityStream = new ActivityStream();
         EventPage eventPage = new EventPage();
 
         String text = "Presentation about party";
@@ -112,7 +113,7 @@ public class EventTests extends AbstractBaseTest {
                 "If you can join it would be very nice. I attached video, file, and link. You can check it out. Thank you!";
 
         loginPage.login();
-        loginPage.navigateTo("Event");
+        activityStream.navigateTo("Event");
         eventPage.putEventName("Birthday Party");
 
         eventPage.putCommands(commandText);
@@ -124,7 +125,7 @@ public class EventTests extends AbstractBaseTest {
 
         eventPage.clickStartDate();
         eventPage.selectMonth("May");
-        //eventPage.selectYear("2020");
+        eventPage.selectYear("2020");
         eventPage.selectDay("9");
 
         //set time for meeting
