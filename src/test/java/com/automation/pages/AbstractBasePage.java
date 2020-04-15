@@ -113,10 +113,4 @@ public abstract class AbstractBasePage {
         WebElement leftmenu=driver.findElement(By.xpath("//*[@title='"+module+"']"));
         wait.until(ExpectedConditions.visibilityOf(leftmenu)).click();
     }
-
-    public void navigateTo(String module){
-        BrowserUtils.waitForPageToLoad(25);
-        WebElement navigate = driver.findElement(By.xpath("//span[text()='"+module+"']"));
-        wait.until(ExpectedConditions.visibilityOf(navigate)).click();
-    }
 }

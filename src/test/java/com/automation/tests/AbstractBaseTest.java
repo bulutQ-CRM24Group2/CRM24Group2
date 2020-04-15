@@ -6,8 +6,6 @@ import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -18,8 +16,6 @@ import java.io.IOException;
 public abstract class AbstractBaseTest {
 
     protected WebDriver driver = Driver.getDriver();
-    protected WebDriverWait wait;
-    protected Actions actions;
 
     protected static ExtentReports extentReports;
     protected static ExtentHtmlReporter extentHtmlReporter;
@@ -52,7 +48,7 @@ public abstract class AbstractBaseTest {
     @BeforeMethod
     public void setup(){
         driver = Driver.getDriver();
-        driver.get(ConfigurationReader.getProperty("environment"));
+        driver.get(ConfigurationReader.getProperty("url"));
         driver.manage().window().maximize();
     }
 
