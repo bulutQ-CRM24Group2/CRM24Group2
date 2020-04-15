@@ -6,7 +6,7 @@ import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -18,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 public abstract class AbstractBaseTest {
 
     protected WebDriver driver = Driver.getDriver();
+    protected WebDriverWait wait;
+    protected Actions actions;
 
     protected static ExtentReports extentReports;
     protected static ExtentHtmlReporter extentHtmlReporter;
