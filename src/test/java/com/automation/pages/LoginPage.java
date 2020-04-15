@@ -82,6 +82,10 @@ public class LoginPage  {
         login.click();
     }
 
+    public String getCurrentUserName(){
+        return username.getText();
+    }
+
 
 
 }

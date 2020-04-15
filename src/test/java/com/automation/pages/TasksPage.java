@@ -15,6 +15,9 @@ public class TasksPage extends AbstractBasePage {
     @FindBy(css = "#tasks-task-priority-cb")
     private WebElement highPriorityCheckBox;
 
+    @FindBy(css = "#bx-panel-toggle-indicator")
+    private WebElement editIcon;
+
 
     public TasksPage(){
         PageFactory.initElements(driver,this);
@@ -27,16 +30,22 @@ public class TasksPage extends AbstractBasePage {
 
     public void clickOnHighPriorityCheckBox(){
         BrowserUtils.waitForPageToLoad(10);
-        driver.switchTo().frame(driver.findElement(By.cssSelector(".side-panel-iframe")));
-        driver.findElement(By.xpath("//div[@class='task-info-panel-title']//input")).sendKeys("hi there");
-//        wait.until(ExpectedConditions.visibilityOf(highPriorityCheckBox)).click();
-//        driver.switchTo().defaultContent();
-        BrowserUtils.wait(5);
+        driver.switchTo().frame(driver.findElement(By.xpath("//div[@class=\"side-panel-content-container\"]//iframe")));
+        BrowserUtils.wait(2);
+//        driver.findElement(By.xpath("//div[@class=\"task-info-panel-title\"]//input[@type='text']")).sendKeys("hi there");
+        wait.until(ExpectedConditions.visibilityOf(highPriorityCheckBox)).click();
+        driver.switchTo().defaultContent();
+        BrowserUtils.wait(2);
     }
 
-    public void writeSth(){
+    public void clickOnEditIcon(){
         BrowserUtils.waitForPageToLoad(10);
-        driver.switchTo().frame(driver.findElement(By.cssSelector("bx-editor-iframe")));
-        driver.findElement(By.xpath("//body[@contenteditable=\"true\"]")).sendKeys("hi there !!");
+        wait.until(ExpectedConditions.visibilityOf(editIcon)).click();
     }
+
+//    public void writeSth(){
+//        BrowserUtils.waitForPageToLoad(10);
+//        driver.switchTo().frame(driver.findElement(By.cssSelector("bx-editor-iframe")));
+//        driver.findElement(By.xpath("//body[@contenteditable=\"true\"]")).sendKeys("hi there !!");
+//    }
 }
