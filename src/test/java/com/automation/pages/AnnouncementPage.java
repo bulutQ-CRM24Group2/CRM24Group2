@@ -1,12 +1,13 @@
 package com.automation.pages;
 
 import com.automation.utilities.BrowserUtils;
-import com.automation.utilities.Driver;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class AnnouncementPage extends AbstractBasePage{
 
@@ -25,9 +26,6 @@ public class AnnouncementPage extends AbstractBasePage{
     @FindBy(id = "bx-b-uploadfile-blogPostForm")
     private WebElement uploadFilesBtn;
 
-    @FindBy(xpath = "(//div[@class='diskuf-uploader'])[1]")
-    private WebElement uploadFileBox;
-
     @FindBy(xpath = "(//td[@class='wd-fa-add-file-light-cell'])[1]")
     private WebElement uploadBitrix;
 
@@ -35,19 +33,22 @@ public class AnnouncementPage extends AbstractBasePage{
     private WebElement bitrixDoc;
 
     @FindBy(xpath = "//span[text()='Select document']")
-    private WebElement sendDocBitrix;
+    private WebElement sendBitrixDoc;
 
     @FindBy(id = "bx-destination-tag")
     private WebElement addUsers;
 
-    @FindBy(id = "destEmailTab_destination6511583")
-    private WebElement emailUser;
-
-    @FindBy(id = "destDepartmentTab_destination6511583")
+    @FindBy(css = "[id^=destDepartmentTab_mention]")
     private WebElement employsAndDepart;
 
-    @FindBy(id = "destLastTab_destination6511583")
+    @FindBy(css = ".bx-finder-box-tab.bx-lm-tab-last.bx-finder-box-tab-selected")
     private WebElement recent;
+
+    @FindBy(xpath = "//div[text()='marketing1@cybertekschool.com']")
+    private WebElement recentPerson;
+
+    @FindBy(xpath = "//span[@class='popup-window-close-icon']")
+    private WebElement closeWindow;
 
     @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-link']")
     private WebElement link;
@@ -70,106 +71,127 @@ public class AnnouncementPage extends AbstractBasePage{
     @FindBy(xpath = "//span[@class='bxhtmled-top-bar-btn bxhtmled-button-quote']")
     private WebElement quota;
 
+    @FindBy(css = ".bxhtmled-quote")
+    private WebElement quotaText;
+
     @FindBy(id = "bx-b-mention-blogPostForm")
     private WebElement addMention;
 
-    @FindBy(id = "//span[@id='lhe_button_editor_blogPostForm']")
+    @FindBy(css = ".bx-finder-company-department-employee-name")
+    List <WebElement> listOfContacts;
+
+    @FindBy(xpath = "//span[@id='lhe_button_editor_blogPostForm']")
     private WebElement visualEditor;
+
+    @FindBy(xpath = "//span[@data-bx-type=\"action\"]")
+    private List<WebElement> listOfIcon;
 
     @FindBy(id = "bx-html-editor-tlbr-idPostFormLHE_blogPostForm")
     private WebElement textBar;
 
+    @FindBy(id = "lhe_button_title_blogPostForm")
+    private WebElement topicIcon;
 
-    /**
-     * Test Case:
-     * Login
-     * Go to More --> click
-     * Go to Announcement -->click
-     */
+    @FindBy(xpath = "//input[@placeholder=\"Topic\"]")
+    private WebElement topicText;
+
+    @FindBy(id = "bx-b-tag-input-blogPostForm")
+    private WebElement tag;
+
+    @FindBy(id = "TAGS_blogPostForm67abSn")
+    private WebElement tagInput;
 
 
     public String announcementTitle(){
-
         return announcTitle.getAttribute("placeholder");
     }
 
     public void clickAnnouncement(){
-        BrowserUtils.wait(3);
-        more.click();
-        BrowserUtils.wait(3);
-        announcement.click();
-
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(more)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(announcement)).click();
     }
 
-
-    public void uploadingFiles(){
-        BrowserUtils.wait(3);
-        uploadFilesBtn.click();
-        uploadFileBox.click();
-        BrowserUtils.wait(3);
-        //Driver.getDriver().switchTo().window("Open").sendKeys("C:\\Users\\kenwe\\Desktop\\Class notes.docx");
-        Driver.getDriver().switchTo().defaultContent();
-        BrowserUtils.wait(3);
-        send.click();
-    }
-
-    public void uploadingBitrix(){
-        BrowserUtils.wait(3);
-        uploadFilesBtn.click();
-        uploadBitrix.click();
-        BrowserUtils.wait(3);
-        bitrixDoc.click();
-        sendDocBitrix.click();
-        BrowserUtils.wait(3);
-        send.click();
+    public void uploadingBitrixFile(){
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(uploadFilesBtn)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(uploadBitrix)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(bitrixDoc)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(sendBitrixDoc)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(send)).click();
     }
 
     public void addingUsers(){
-        BrowserUtils.wait(3);
-        addUsers.click();
-        emailUser.click();
-        employsAndDepart.click();
-        recent.click();
-        send.click();
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(addUsers)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(recent)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(recentPerson)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(closeWindow)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(send)).click();
     }
 
     public void link(){
-        BrowserUtils.wait(3);
-        link.click();
-        BrowserUtils.wait(3);
-        linkText.sendKeys("Link is attached");
-        BrowserUtils.wait(3);
-        linkURL.sendKeys("https://www.google.com/");//how to put url
-        BrowserUtils.wait(3);
-        save.click();
-        send.click();
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(link)).click();
+        wait.until(ExpectedConditions.visibilityOf(linkText)).sendKeys("Link is attached");
+        wait.until(ExpectedConditions.visibilityOf(linkURL)).sendKeys("https://www.google.com/");
+        wait.until(ExpectedConditions.elementToBeClickable(save)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(send)).click();
     }
 
     public void video(){
-        video.click();
-        videoSource.sendKeys("https://www.youtube.com/");
-        send.click();
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(video)).click();
+        wait.until(ExpectedConditions.visibilityOf(videoSource)).sendKeys("https://www.youtube.com/watch?v=W1xwTqgzQ_g");
+        wait.until(ExpectedConditions.elementToBeClickable(save)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(send)).click();
     }
 
     public void quota(){
-        BrowserUtils.wait(3);
-        quota.click();
-        BrowserUtils.wait(3);
-        send.click();
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(quota)).click();
+        driver.switchTo().frame(0);
+        wait.until(ExpectedConditions.visibilityOf(quotaText)).sendKeys("This is an important announcement");
+        driver.switchTo().defaultContent();
+        wait.until(ExpectedConditions.elementToBeClickable(send)).click();
     }
 
     public void addMention(){
-        BrowserUtils.wait(3);
-        addMention.click();
-        BrowserUtils.wait(3);
-        employsAndDepart.click();
-        send.click();
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(addMention)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(employsAndDepart)).click();
+        for (int i = 0; i <listOfContacts.size(); i++) {
+            listOfContacts.get(1).click();
+        }
+        wait.until(ExpectedConditions.elementToBeClickable(send)).click();
     }
 
     public void visualEditor(){
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(visualEditor)).click();
+        for (int i = 0; i < listOfIcon.size() ; i++) {
+            Assert.assertTrue(listOfIcon.get(i).isDisplayed());
+        }
+        Assert.assertEquals(listOfIcon.get(0).getAttribute("title"),"Bold");
+        Assert.assertEquals(listOfIcon.get(1).getAttribute("title"),"Italic");
+        Assert.assertEquals(listOfIcon.get(2).getAttribute("title"),"Underline");
+    }
+
+    public void topic(){
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(topicIcon)).click();
+
+        String actual = topicText.getAttribute("placeholder");
+        String expected = "Topic";
         BrowserUtils.wait(3);
-        visualEditor.click();
-        BrowserUtils.wait(3);
+        Assert.assertEquals(actual,expected);
+    }
+
+    public void tag(){
+        BrowserUtils.waitForPageToLoad(15);
+        wait.until(ExpectedConditions.elementToBeClickable(tag)).click();
+        wait.until(ExpectedConditions.visibilityOf(tagInput)).sendKeys("holiday");
+        wait.until(ExpectedConditions.elementToBeClickable(send)).click();
     }
 
 

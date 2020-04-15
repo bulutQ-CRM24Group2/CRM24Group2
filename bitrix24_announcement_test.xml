@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Test suite">
+
+    <test name="Announcement Test">
+        <parameter name="reportName" value="Announcement"/>
+        <classes>
+            <class name="com.automation.tests.AnnouncementTest"/>
+        </classes>
+    </test>
+</suite>
