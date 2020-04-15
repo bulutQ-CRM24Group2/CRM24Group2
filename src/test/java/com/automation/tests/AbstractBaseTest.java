@@ -6,16 +6,20 @@ import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.WebDriver;
+
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractBaseTest {
 
     protected WebDriver driver = Driver.getDriver();
+    protected WebDriverWait wait;
+    protected Actions actions;
 
     protected static ExtentReports extentReports;
     protected static ExtentHtmlReporter extentHtmlReporter;
@@ -55,25 +59,17 @@ public abstract class AbstractBaseTest {
 
 
     @AfterMethod
-    public void teardown(ITestResult testResult){
-        if (testResult.getStatus() == ITestResult.FAILURE){
-            String screenshotLocation = BrowserUtils.getScreenshot(testResult.getName());
-            try {
-                extentTest.fail(testResult.getName());
-                extentTest.addScreenCaptureFromPath(screenshotLocation);
-                extentTest.fail(testResult.getThrowable());
-            } catch (IOException e) {
-                e.printStackTrace();
-                throw new RuntimeException("Failed to attach screenshot");
-            }
-        }else if (testResult.getStatus() == ITestResult.SUCCESS){
-            extentTest.pass(testResult.getName());
-        }else if (testResult.getStatus() == ITestResult.SKIP){
-            extentTest.skip(testResult.getName());
+
+    public void after(ITestResult iTestResult) {
+        if (iTestResult.getStatus() == ITestResult.FAILURE) {
+            String screenshortResult = BrowserUtils.getScreenshot(iTestResult.getName());
         }
         BrowserUtils.wait(3);
         Driver.closeDriver();
+
     }
-
-
 }
+
+
+
+

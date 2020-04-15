@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Test suite">
+
+    <test name="Event Module">
+        <classes>
+            <class name="com.automation.tests.EventTests"/>
+        </classes>
+    </test>
+
+
+</suite>
