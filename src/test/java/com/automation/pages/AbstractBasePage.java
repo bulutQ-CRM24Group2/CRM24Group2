@@ -1,3 +1,10 @@
+/**
+ * This class is base class for application
+ *It helps you to navigate around the application
+ * @auhor Omer Faruk Sanlialp
+ * @version 1.0
+ * @since 2020-04-14
+ */
 package com.automation.pages;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +18,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractBasePage {
+
+
     protected WebDriver driver= Driver.getDriver();
     protected WebDriverWait wait=new WebDriverWait(driver,20);
     @FindBy(id="user-block")
@@ -27,6 +36,9 @@ public abstract class AbstractBasePage {
     protected WebElement searchBox;
     @FindBy(id = "sitemap-menu")
     protected  WebElement siteMapBtn;
+    @FindBy(id = "'feed-add-post-form-tab")
+    protected  WebElement buttons;
+
     public AbstractBasePage(){
         PageFactory.initElements(driver,this);
     }
@@ -108,4 +120,6 @@ public abstract class AbstractBasePage {
     }
 
 
+
 }
+
