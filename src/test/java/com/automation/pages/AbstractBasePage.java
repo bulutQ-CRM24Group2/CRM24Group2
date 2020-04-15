@@ -1,3 +1,10 @@
+/**
+ * This class is base class for application
+ *It helps you to navigate around the application
+ * @auhor Omer Faruk Sanlialp
+ * @version 1.0
+ * @since 2020-04-14
+ */
 package com.automation.pages;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.WebDriver;
@@ -109,6 +116,9 @@ public abstract class AbstractBasePage {
         WebElement leftmenu=driver.findElement(By.xpath("//*[@title='"+module+"']"));
         wait.until(ExpectedConditions.visibilityOf(leftmenu)).click();
     }
-
+    public void navigateTo(String module){
+        BrowserUtils.waitForPageToLoad(25);
+        WebElement navigate = driver.findElement(By.xpath("//span[text()='"+module+"']"));
+        wait.until(ExpectedConditions.visibilityOf(navigate)).click();
     }
-
+}

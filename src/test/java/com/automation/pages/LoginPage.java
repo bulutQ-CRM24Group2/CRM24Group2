@@ -49,8 +49,6 @@ public class LoginPage extends AbstractBasePage {
 
 
 
-
-
     public LoginPage() {
 
         PageFactory.initElements(Driver.getDriver(), this);
@@ -68,8 +66,20 @@ public class LoginPage extends AbstractBasePage {
 
     public void login(){
         BrowserUtils.wait(3);
-        username.sendKeys(ConfigurationReader.getProperty("username"));
+        username.sendKeys(ConfigurationReader.getProperty("hr"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
+    }
+
+
+    /**
+     * Created By Omer
+     * Choose user type for different user levels
+     * @param userType help_desk, marketing, hr
+     */
+    public void loginAs(String userType){
+        username.sendKeys(ConfigurationReader.getProperty(userType));
+        password.sendKeys(ConfigurationReader.getProperty("password"));
+        login.click();
     }
 
 
