@@ -27,7 +27,7 @@ public class EventPage extends AbstractBasePage {
     private WebElement upload;
     @FindBy(xpath = "(//span[@class='bx-file-dialog-column-row bx-file-dialog-column-name'])[4]")
     private WebElement file;
-    @FindBy(id = "feed-event-view-link-livefeed5199")
+    @FindBy(css = "[id^=feed-event-view-link]")
     private WebElement savedFile;
     @FindBy(xpath = "//span[text()='Select document']")
     private WebElement selectDoc;
