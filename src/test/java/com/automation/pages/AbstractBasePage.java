@@ -1,3 +1,10 @@
+/**
+ * This class is base class for application
+ *It helps you to navigate around the application
+ * @auhor Omer Faruk Sanlialp
+ * @version 1.0
+ * @since 2020-04-14
+ */
 package com.automation.pages;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.WebDriver;
