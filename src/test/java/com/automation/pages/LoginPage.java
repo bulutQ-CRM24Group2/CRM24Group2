@@ -6,7 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-public class LoginPage extends AbstractBasePage {
+public class LoginPage  {
 
     @FindBy(className = "log-popup-header")
     private WebElement authorizationLogo;
@@ -68,7 +68,7 @@ public class LoginPage extends AbstractBasePage {
 
     public void login(){
         BrowserUtils.wait(3);
-        username.sendKeys(ConfigurationReader.getProperty("username"));
+        username.sendKeys(ConfigurationReader.getProperty("hr"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
     }
 
