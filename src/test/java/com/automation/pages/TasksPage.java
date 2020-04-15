@@ -34,9 +34,9 @@ public class TasksPage extends AbstractBasePage {
         BrowserUtils.wait(5);
     }
 
-//    public void writeSth(){
-//        BrowserUtils.waitForPageToLoad(10);
-//        driver.switchTo().frame(driver.findElement(By.cssSelector("bx-editor-iframe")));
-//        driver.findElement(By.xpath("//body[@contenteditable=\"true\"]")).sendKeys("hi there !!");
-//    }
+    public void writeSth(){
+        BrowserUtils.waitForPageToLoad(10);
+        driver.switchTo().frame(driver.findElement(By.cssSelector("bx-editor-iframe")));
+        driver.findElement(By.xpath("//body[@contenteditable=\"true\"]")).sendKeys("hi there !!");
+    }
 }
