@@ -22,16 +22,6 @@ public class LoginTest extends AbstractBaseTest {
         Assert.assertEquals(Driver.getDriver().getTitle(),"Portal");
         extentTest.pass("Login Succeed");
 
-        extentTest = extentReports.createTest("upload image from local drive");
-        ActivitySteamPageTop test=new ActivitySteamPageTop();
-        test.navigateTo("message");
-        Message msTest=new Message();
-        msTest.uploadFileFromLocal("Downloads/CRM24/testDocument/1.jpg");
-        BrowserUtils.wait(10);
-
-        msTest.typeMessage("This is for Omer");
-
-
         extentTest.pass("Upload Succeed");
         test.send();
 
