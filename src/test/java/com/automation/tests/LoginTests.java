@@ -47,13 +47,13 @@ public class LoginTests extends  AbstractBaseTest {
         extentTest.pass("Warning message is displayed");
     }
 
-    @Test
-    public void verifyUserName(){
-        extentTest = extentReports.createTest("Verify user name");
-        LoginPage loginPage = new LoginPage();
-        loginPage.login();
-        Assert.assertEquals(loginPage.getCurrentUserName(), ConfigurationReader.getProperty("hr"));
-        extentTest.pass("Username verified");
-    }
+//    @Test
+//    public void verifyUserName(){
+//        extentTest = extentReports.createTest("Verify user name");
+//        LoginPage loginPage = new LoginPage();
+//        loginPage.login();
+//        Assert.assertEquals(loginPage.getCurrentUserName(), ConfigurationReader.getProperty("hr"));
+//        extentTest.pass("Username verified");
+//    }
 
 }

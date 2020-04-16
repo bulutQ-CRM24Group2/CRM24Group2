@@ -20,7 +20,7 @@ public class LoginTest extends AbstractBaseTest {
         loginPage.loginAs("hr");
         Assert.assertEquals(Driver.getDriver().getTitle(),"Portal");
         extentTest.pass("Login Succeed");
-        test.send();
+       // test.send();
 
 
     }
