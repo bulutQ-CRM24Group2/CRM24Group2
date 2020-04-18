@@ -7,10 +7,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-public class LoginPage extends AbstractBasePage {
+
+public class LoginPage {
+
 
     @FindBy(className = "log-popup-header")
     private WebElement authorizationLogo;
@@ -53,8 +53,6 @@ public class LoginPage extends AbstractBasePage {
 
 
 
-
-
     public LoginPage() {
 
         PageFactory.initElements(Driver.getDriver(), this);
@@ -72,7 +70,7 @@ public class LoginPage extends AbstractBasePage {
 
     public void login(){
         BrowserUtils.wait(3);
-        username.sendKeys(ConfigurationReader.getProperty("username"));
+        username.sendKeys(ConfigurationReader.getProperty("hr"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
     }
     public void loginAs(String userType){
@@ -82,6 +80,18 @@ public class LoginPage extends AbstractBasePage {
     }
 
 
+
+
+    /**
+     * Created By Omer
+     * Choose user type for different user levels
+     * @param userType help_desk, marketing, hr
+     */
+    public void loginAs(String userType){
+        username.sendKeys(ConfigurationReader.getProperty(userType));
+        password.sendKeys(ConfigurationReader.getProperty("password"));
+        login.click();
+    }
 
 
 

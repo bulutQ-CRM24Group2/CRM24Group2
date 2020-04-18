@@ -7,19 +7,24 @@ import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractBaseTest {
-
-    protected WebDriverWait wait;
-    protected Actions actions;
 
     protected ExtentReports extentReports;
     protected ExtentHtmlReporter extentHtmlReporter;
     protected ExtentTest extentTest;
+
+    protected WebDriver driver = Driver.getDriver();
+    protected WebDriverWait wait;
+    protected Actions actions;
+
 
 
     @BeforeTest
@@ -53,6 +58,8 @@ public abstract class AbstractBaseTest {
         Driver.getDriver().manage().window().maximize();
         wait = new WebDriverWait(Driver.getDriver(), 25);
         actions = new Actions(Driver.getDriver());
+
+   
     }
 
 
@@ -69,5 +76,12 @@ public abstract class AbstractBaseTest {
         BrowserUtils.wait(2);
         Driver.closeDriver();
     }
+}
+
+
+
 
 }
+
+
+
