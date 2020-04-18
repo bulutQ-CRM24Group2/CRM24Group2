@@ -77,9 +77,6 @@ public abstract class AbstractBaseTest {
         BrowserUtils.wait(2);
         Driver.closeDriver();
     }
-}
-
-
 
 
 }
