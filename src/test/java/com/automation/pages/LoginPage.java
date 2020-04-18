@@ -73,15 +73,7 @@ public class LoginPage {
         username.sendKeys(ConfigurationReader.getProperty("hr"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
     }
-    public void loginAs(String userType){
-        username.sendKeys(ConfigurationReader.getProperty(userType));
-        password.sendKeys(ConfigurationReader.getProperty("password"));
-        login.click();
-    }
-
-
-
-
+    
     /**
      * Created By Omer
      * Choose user type for different user levels
