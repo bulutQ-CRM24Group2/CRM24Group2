@@ -2,11 +2,15 @@ package com.automation.pages;
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import com.automation.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-public class LoginPage  {
+
+
+public class LoginPage {
+
 
     @FindBy(className = "log-popup-header")
     private WebElement authorizationLogo;
@@ -69,6 +73,13 @@ public class LoginPage  {
         username.sendKeys(ConfigurationReader.getProperty("hr"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
     }
+    public void loginAs(String userType){
+        username.sendKeys(ConfigurationReader.getProperty(userType));
+        password.sendKeys(ConfigurationReader.getProperty("password"));
+        login.click();
+    }
+
+
 
 
     /**
