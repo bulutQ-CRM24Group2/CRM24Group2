@@ -64,20 +64,26 @@ public abstract class AbstractBaseTest {
     }
 
 
-    @AfterMethod
-    public void teardown(ITestResult iTestResult) throws IOException {
-
-        if (iTestResult.getStatus() == ITestResult.FAILURE) {
-            String screenshotPath = BrowserUtils.getScreenshot(iTestResult.getName());
-            extentTest.fail(iTestResult.getName());
-            BrowserUtils.wait(2);
-            extentTest.addScreenCaptureFromPath(screenshotPath, "Failed");
-            extentTest.fail(iTestResult.getThrowable());
+   @AfterMethod
+    public void teardown(ITestResult testResult){
+        if (testResult.getStatus() == ITestResult.FAILURE){
+            String screenshotLocation = BrowserUtils.getScreenshot(testResult.getName());
+            try {
+                extentTest.fail(testResult.getName());
+                extentTest.addScreenCaptureFromPath(screenshotLocation);
+                extentTest.fail(testResult.getThrowable());
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException("Failed to attach screenshot");
+            }
+        }else if (testResult.getStatus() == ITestResult.SUCCESS){
+            extentTest.pass(testResult.getName());
+        }else if (testResult.getStatus() == ITestResult.SKIP){
+            extentTest.skip(testResult.getName());
         }
-        BrowserUtils.wait(2);
+        BrowserUtils.wait(3);
         Driver.closeDriver();
     }
-
 
 }
 
